@@ -1,9 +1,13 @@
+<div class="title">
+  <h2>{{ title }}</h2>
+  <p>Select a local authority to see percentages distrubuted by the food standard rating</p>
+</div>
 <div class="authority-title">
-  Select a local authority
+  Local Authority
 </div>
 <div class="authorities">
   <mat-form-field>
-    <mat-select placeholder="Authorities" [(value)]="selectedAuthorityId" (selectionChange)="authorityChanged($event)">
+    <mat-select id="authoritySelect" placeholder="Authorities" [(value)]="selectedAuthorityId" (selectionChange)="authorityChanged($event)">
       <mat-option *ngFor="let authority of authorities" [value]="authority.authorityId">
         {{ authority.name }}
       </mat-option>
@@ -11,13 +15,13 @@
   </mat-form-field>
 </div>
 
-<div class="loading-indicator" *ngIf="loading == true">
+<div id="loadingIndicator" class="loading-indicator" *ngIf="loading == true">
   <p>Loading...</p>
   <mat-spinner></mat-spinner>
 </div>
 
 <div *ngIf="dataLoaded == true">
-  <table mat-table [dataSource]="ratingPercentages" class="mat-elevation-z8">
+  <table id="percentageRatingTable" mat-table [dataSource]="ratingPercentages" class="mat-elevation-z8">
       <!-- Rating Column -->
       <ng-container matColumnDef="rating">
         <th mat-header-cell *matHeaderCellDef> Rating </th>

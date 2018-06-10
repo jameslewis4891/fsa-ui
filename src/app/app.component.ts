@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FSAService } from './services/fsa.service';
 import { IRatingPercentage } from './interfaces/IRatingPercentage';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { IRatingPercentage } from './interfaces/IRatingPercentage';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'fsa-ui';
+  title = 'FSAUi';
 
   authorities = [];
   displayedColumns = ['rating', 'percentage'];
@@ -18,11 +19,17 @@ export class AppComponent {
   loading: boolean;
   dataLoaded: boolean;
 
-  constructor(private fsaService: FSAService) {
+  constructor(private fsaService: FSAService,
+              private titleService: Title) {
+
+    titleService.setTitle(this.title);
+
     this.loading = false;
     this.dataLoaded = false;
     fsaService.getAuthorities().subscribe(response => {
       this.authorities = response.authorities;
+    }, err => {
+      console.log(err);
     });
   }
 
@@ -33,6 +40,8 @@ export class AppComponent {
       this.loading = false;
       this.ratingPercentages = response;
       this.dataLoaded = true;
+    }, err => {
+      console.log(err);
     });
   }
 

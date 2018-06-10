@@ -2,8 +2,9 @@ div {
    margin-left: 50px;
 }
 
-.authority-title {
-    padding-top: 50px;
+.title {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .loading-indicator {
