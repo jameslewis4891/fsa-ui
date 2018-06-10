@@ -52,7 +52,7 @@ describe('AppComponent', () => {
 
   it('Should display the rating percentages if when a local authority is selected', async() => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.authority-title').textContent).toContain('Select a local authority');
+    expect(compiled.querySelector('.authority-title').textContent).toContain('Local Authority');
     expect(compiled.querySelector('.mat-select')).toBeTruthy();
   });
 
